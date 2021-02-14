@@ -1,0 +1,95 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.3.
+--
+-- see: https://github.com/sol/hpack
+
+name:           Meta
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/MetaBuilder#readme>
+homepage:       https://github.com/githubuser/MetaBuilder#readme
+bug-reports:    https://github.com/githubuser/MetaBuilder/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2020 Author name here
+license:        BSD3
+build-type:     Simple
+data-files:
+    templates/article.tex.metabuild-template
+    templates/screport.tex.metabuild-template
+    templates/agda.sty.metabuild-template
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/MetaBuilder
+
+library
+  exposed-modules:
+      AgdaPublish
+      AgdaPublish.Common
+      AgdaPublish.Highlevel
+      AgdaPublish.Lowlevel
+      AgdaPublish.Midlevel
+      AgdaPublish.MidlevelCode
+      AgdaPublish.Persistent
+      Lib
+  other-modules:
+      Paths_Meta
+  hs-source-dirs:
+      Library
+  default-extensions: DuplicateRecordFields DeriveGeneric
+  build-depends:
+      Agda
+    , aeson
+    , attoparsec
+    , base >=4.7 && <5
+    , directory
+    , executable-path
+    , filemanip
+    , parsec
+    , shake
+    , split
+    , text
+    , yaml
+  default-language: Haskell2010
+
+executable meta
+  main-is: Main.hs
+  other-modules:
+      Paths_Meta
+  hs-source-dirs:
+      MetaRunner
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Meta
+    , base >=4.7 && <5
+    , optparse-applicative
+    , process
+  default-language: Haskell2010
+
+executable metabuild
+  main-is: Main.hs
+  other-modules:
+      Paths_Meta
+  hs-source-dirs:
+      MetaBuilder
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Agda
+    , Meta
+    , base >=4.7 && <5
+    , shake
+  default-language: Haskell2010
+
+test-suite MetaBuilder-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_Meta
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      MetaBuilder
+    , base >=4.7 && <5
+  default-language: Haskell2010

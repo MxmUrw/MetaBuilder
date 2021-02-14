@@ -1,0 +1,4 @@
+
+.stack-work/
+.directory
+stack.yaml.lock
