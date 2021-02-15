@@ -5,9 +5,10 @@ A tool intended for streamlining the process of building larger, (possibly) mult
 Currently focused on building Agda projects, in particular on generating nice-looking documents from annotated Agda source code.
 
 ## Alternative Literate Agda
-This tool offers the possibility to write literate Agda using docstring-like syntax.
+This tool offers the possibility to write literate Agda using docstring-like syntax. But note that the implementation is currently very hacky,
+and is very specialized to my own requirements for writing my master's thesis.
 
-The following example code,
+Nevertheless, to show what is currently possible, look at the following example code:
 ```Agda
 -- ===* Monoids
 -- | Monoids are an important concept in both mathematics and computer science.
@@ -30,6 +31,10 @@ record IMonoid (A : 𝒰 𝑖) : 𝒰 𝑖 where
   infixl 50 _⋅_
 -- //
 ```
-is going to be displayed as:
-![Monoid example](/Documentation/Screenshots/Monoids.png?raw=true)
+
+it is rendered as follows in the PDF:
+
+<img src="https://raw.githubusercontent.com/MxmUrw/MetaBuilder/main/Documentation/Screenshots/Monoids.png" width="700">
+
+
 
